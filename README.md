@@ -1,4 +1,5 @@
-# Facebook echo bot using Vert.x 
+# Facebook echo bot using Vert.x
+![Build Status](https://travis-ci.org/jboss-outreach/facebook-echo-bot.svg?branch=master)
 
 This project shows how to deploy a facebook echo bot Vert.x 3 applications to Heroku. The same application can be deployed using 3 approaches:
 
