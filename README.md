@@ -41,13 +41,18 @@ https://developers.facebook.com/docs/messenger-platform/getting-started/app-setu
 ### Env properties
 
 You need to take care of 4 properties :
-* facebook.verify.token    # you decide this string. Just neet to put it same at both app and facebook
-* facebook.access.token    # used to send pi hits to facebook on your behalf.
-* http.port                # it is 8080 by default
-* http.address             # it is 0.0.0.0 by default
+```
+ facebook.verify.token    # you decide this string. Just neet to put it same at both app and facebook
+ facebook.access.token    # used to send pi hits to facebook on your behalf.
+ http.port                # it is 8080 by default
+ http.address             # it is 0.0.0.0 by default
+```
 
-One of way to set is to -D<prop-name>=<prop-val>
-eg : $ java $JAVA_OPTS `-Dhttp.port=$PORT` -jar target/facebook-echo-bot-3.5.0-jar-with-dependencies.jar
+One of way to set is to `-D<prop-name>=<prop-val>`
 
+eg : 
+```
+$ java -Dhttp.port=$PORT -jar target/facebook-echo-bot-3.5.0-jar-with-dependencies.jar
+```
 
 When creating a project of your own, you'll need to borrow from the [`Procfile`](https://github.com/jboss-outreach/facebook-echo-bot/blob/master/Procfile) in the root directory of this project, and the `MAVEN_CUSTOM_OPTS` will only be necessary if your app is not the primary module of your Maven project.
