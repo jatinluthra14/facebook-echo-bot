@@ -1,6 +1,7 @@
 package com.example.chatbot;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.json.Json;
 import io.vertx.core.json.JsonObject;
@@ -32,14 +33,19 @@ public class FacebookBotVerticle extends AbstractVerticle {
 
         vertx.createHttpServer().requestHandler(router::accept)
                 .listen(
-                        Integer.getInteger("http.port"), System.getProperty("http.address", "0.0.0.0"));
+                        Integer.getInteger("http.port", 8080), System.getProperty("http.address", "0.0.0.0"));
+    }
+
+    public static void main(String[] args) {
+        Vertx vertx = Vertx.vertx();
+        vertx.deployVerticle(new FacebookBotVerticle());
     }
 
 
     private void verify(RoutingContext routingContext) {
         String challenge = routingContext.request().getParam("hub.challenge");
         String token = routingContext.request().getParam("hub.verify_token");
-        if (!token.equals(VERIFY_TOKEN)) {
+        if (!VERIFY_TOKEN.equals(token)) {
             challenge = "fake";
         }
 
@@ -103,8 +109,8 @@ public class FacebookBotVerticle extends AbstractVerticle {
 
     private void updateProperties() {
         
-            VERIFY_TOKEN = System.getenv("facebook.verify.token");
-            ACCESS_TOKEN = System.getenv("facebook.access.token");
+            VERIFY_TOKEN = System.getProperty("facebook.verify.token", "verty-token-default");
+            ACCESS_TOKEN = System.getProperty("facebook.access.token", "access-token-default");
         
     }
 
