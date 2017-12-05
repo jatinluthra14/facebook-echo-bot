@@ -31,7 +31,7 @@ $ mvn clean package
 $ java -jar target/facebook-echo-bot-3.5.0-jar-with-dependencies.jar
 ```
 
-**With localhost you can use https://ngrok.com/ for setting up https tunnel"
+**With localhost you can use https://ngrok.com/ for setting up https tunnel**
 
 ```
 $ ./ngrok http 8080
