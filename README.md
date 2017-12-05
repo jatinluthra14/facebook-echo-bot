@@ -30,6 +30,13 @@ $ git clone https://github.com/jboss-outreach/facebook-echo-bot.git
 $ mvn clean package 
 $ java -jar target/facebook-echo-bot-3.5.0-jar-with-dependencies.jar
 ```
+
+**With localhost you can use https://ngrok.com/ for setting up https tunnel"
+
+```
+$ ./ngrok http 8080
+```
+
 ### Webhook
 
 Webhook is at `<host>:<port>/webhook`
