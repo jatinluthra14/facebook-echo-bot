@@ -74,7 +74,7 @@ public class FacebookBotVerticle extends AbstractVerticle {
                 } else {
                     String data = response.message.text;
 
-                    if (data.contains("joke")) {
+                    if (data.toLowerCase().contains("joke")) {
                         Jokes jokes = new Jokes();
                         int random = (int) (Math.random() * jokes.jokes.size());
                         response.message.text = (new Jokes()).jokes.get(random);
