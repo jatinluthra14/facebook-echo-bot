@@ -4,6 +4,7 @@ import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Vertx;
 import io.vertx.core.buffer.Buffer;
 import io.vertx.core.json.Json;
+import io.vertx.core.json.JsonArray;
 import io.vertx.core.json.JsonObject;
 import io.vertx.ext.web.Router;
 import io.vertx.ext.web.RoutingContext;
@@ -12,8 +13,10 @@ import io.vertx.ext.web.client.WebClient;
 import io.vertx.ext.web.handler.BodyHandler;
 import io.vertx.ext.web.client.WebClientOptions;
 
-public class FacebookBotVerticle extends AbstractVerticle {
+import java.util.ArrayList;
+import java.util.Map;
 
+public class FacebookBotVerticle extends AbstractVerticle {
 
     private String VERIFY_TOKEN;
     private String ACCESS_TOKEN;
@@ -24,11 +27,8 @@ public class FacebookBotVerticle extends AbstractVerticle {
         updateProperties();
 
         Router router = Router.router(vertx);
-
         router.route().handler(BodyHandler.create());
-
         router.get("/webhook").handler(this::verify);
-
         router.post("/webhook").handler(this::message);
 
         vertx.createHttpServer().requestHandler(router::accept)
@@ -60,51 +60,51 @@ public class FacebookBotVerticle extends AbstractVerticle {
                 .putHeader("content-type", "application/json; charset=utf-8")
                 .end("done");
 
-        final Hook hook = Json.decodeValue(routingContext.getBodyAsString(), Hook.class);
+        final JsonObject hook = routingContext.getBodyAsJson();
 
-        for (Hook.Item item : hook.entry) {
-            for (Content i : item.messaging) {
+        JsonArray entries = hook.getJsonArray("entry");
 
-                Response response = new Response();
-                response.recipient = i.sender;
-                response.message = i.message;
+        entries.getList().forEach( (Object e) -> {
 
-                if (response.message.text == null) {
-                    response.message.text = "Thanks for your attachment";
-                } else {
-                    String data = response.message.text;
+            System.out.println(e.getClass());
 
-                    if (data.toLowerCase().contains("joke")) {
-                        Jokes jokes = new Jokes();
-                        int random = (int) (Math.random() * jokes.jokes.size());
-                        response.message.text = (new Jokes()).jokes.get(random);
-                    } else {
-                        response.message.text = "Please please ask me to tell a joke";
-                    }
-                }
+            Map entry = (Map) e ;
+            ArrayList messagingList = (ArrayList) entry.get("messaging");
+            System.out.println(messagingList.getClass());
+            messagingList.forEach((Object m) -> {
+
+                Map messaging = (Map) m ;
+                Map sender = (Map) messaging.get("sender");
+                messaging.put("recipient", sender);
+                messaging.remove("sender");
+
+                Map message = (Map) messaging.get("message");
+                message.remove("mid");
+                message.remove("seq");
+                messaging.put("message", message);
+
+                System.out.println(JsonObject.mapFrom(messaging));
 
                 WebClientOptions options = new WebClientOptions();
                 options.setSsl(true).setLogActivity(true);
                 WebClient client = WebClient.create(vertx, options);
 
-                System.out.println(Json.encode(response));
 
                 client
                         .post(443, "graph.facebook.com", "/v2.6/me/messages/")
                         .addQueryParam("access_token", ACCESS_TOKEN)
-                        .sendJsonObject(JsonObject.mapFrom(response), ar -> {
+                        .sendJsonObject(JsonObject.mapFrom(messaging), ar -> {
                             if (ar.succeeded()) {
                                 // Obtain response
                                 HttpResponse<Buffer> res = ar.result();
 
-                                System.out.println("Received response with status code" + res.statusCode());
+                                System.out.println("Received response with status code" + res.bodyAsString());
                             } else {
                                 System.out.println("Something went wrong " + ar.cause().getMessage());
                             }
                         });
-
-            }
-        }
+            });
+        });
     }
 
     private void updateProperties() {
@@ -113,7 +113,5 @@ public class FacebookBotVerticle extends AbstractVerticle {
             ACCESS_TOKEN = System.getProperty("facebook.access.token", "access-token-default");
         
     }
-
-
 }
 
