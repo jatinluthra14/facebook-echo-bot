@@ -63,3 +63,10 @@ $ java -Dhttp.port=$PORT -jar target/facebook-echo-bot-3.5.0-jar-with-dependenci
 ```
 
 When creating a project of your own, you'll need to borrow from the [`Procfile`](https://github.com/jboss-outreach/facebook-echo-bot/blob/master/Procfile) in the root directory of this project, and the `MAVEN_CUSTOM_OPTS` will only be necessary if your app is not the primary module of your Maven project.
+
+## Contributing to the project
+1. Fork and clone this repository.
+2. Make changes to your local copy of this repository.
+3. Commit and push your local changes to your fork on GitHub.
+4. Review the changes on your fork.
+5. Create a pull request to merge your changes into this repository.
