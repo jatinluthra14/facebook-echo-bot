@@ -1,6 +1,8 @@
 # Facebook echo bot using Vert.x
 ![Build Status](https://travis-ci.org/jboss-outreach/facebook-echo-bot.svg?branch=master)
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3afc05a50a5d4e1ca06fe46a288146c4)](https://www.codacy.com/app/jagreetdg/facebook-echo-bot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jagreetdg/facebook-echo-bot&amp;utm_campaign=Badge_Grade)
+
 This project shows how to deploy a facebook echo bot Vert.x 3 applications to Heroku. The same application can be deployed using 3 approaches:
 
 * Using a one-click badge
