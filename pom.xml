@@ -37,6 +37,11 @@
       <artifactId>vertx-config</artifactId>
       <version>${project.version}</version>
     </dependency>
+	
+	<dependency>
+      <groupId>org.wildfly.swarm</groupId>
+      <artifactId>vertx</artifactId>
+    </dependency>
 
   </dependencies>
 
@@ -95,7 +100,20 @@
           </processTypes>
         </configuration>
       </plugin>
-    </plugins>
+
+	  <plugin>
+		<groupId>org.wildfly.swarm</groupId>
+		<artifactId>wildfly-swarm-plugin</artifactId>
+        <version>2017.11.0</version>
+		<executions>
+		<execution>
+			<goals>
+			<goal>package</goal>
+			</goals>
+		</execution>
+		</executions>
+	  </plugin>
+	</plugins>
   </build>
 
   <profiles>
@@ -104,7 +122,7 @@
       <repositories>
         <repository>
           <id>staging</id>
-          <url>https://oss.sonatype.org/content/repositories/iovertx-3720/</url>
+          <url>https://oss.sonatype.org/content/repositories/releases/</url>
         </repository>
       </repositories>
     </profile>
