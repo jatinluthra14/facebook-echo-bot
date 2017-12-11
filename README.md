@@ -171,6 +171,17 @@ After creating the Pull Request, it will run the tests, perhaps some tools for m
 In case the tests are not passed or the build is not compiled, you will see a red error message and by clicking the Details link you will see what is wrong. In most cases, you will need to fix your Pull Request so that all checks are successful.
 
 
+## Contributing to the project
+1. Fork and clone this repository.
+2. Make changes to your local copy of this repository.
+3. Commit and push your local changes to your fork on GitHub.
+4. Review the changes on your fork.
+5. Create a pull request to merge your changes into this repository.
+
+## Video Demonstration
+A Video Demonstration is uploaded to [`Youtube`](https://www.youtube.com/watch?v=hklLfa8096I) which can help to setup Facebook Echo Bot on any cloud.
+
+
 ### <a id="pull_amend"></a>Amending your pull request
 
 If everything is good with your pull request, then soon it will be merged by a project collaborator.
@@ -195,3 +206,4 @@ Instead of the last command, you can also run
 ```bash
 git push origin :<your-name-branch>
 ```
+
