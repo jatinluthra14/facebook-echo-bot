@@ -5,3 +5,7 @@
 .DS_Store
 /build
 /target
+.vscode
+.classpath
+.project
+.settings
