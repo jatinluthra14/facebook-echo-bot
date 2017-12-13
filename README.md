@@ -1,18 +1,16 @@
-# Facebook echo bot using Vert.x
-![Build Status](https://travis-ci.org/jboss-outreach/facebook-echo-bot.svg?branch=master)
+# Facebook Echo Bot
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3afc05a50a5d4e1ca06fe46a288146c4)](https://www.codacy.com/app/jagreetdg/facebook-echo-bot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jagreetdg/facebook-echo-bot&amp;utm_campaign=Badge_Grade)
+
+## What is this project about?
+
+This project showcases an echo bot for Facebook, built on the [Vert.x toolkit](http://vertx.io), and primarily deployed on the [Heroku platform](https://heroku.com).
+
+## Contents
 * [Setting up the project](#setup)
 * [Environment properties](#env)
 * [Accessing the app](#ass)
 * [Setting up your Facebook app](#set)
 * [Making contributions](#contr)
-
-This project shows how to deploy a facebook echo bot Vert.x 3 applications to Heroku. The same application can be deployed using 3 approaches:
-* Using a one-click badge
-* Using the maven plugin
-* Using the git interface
-
-If you use a fat-jar then deploying on heroku is as simple as one click. The only requirement is to create the Heroku specific [Procfile](../Procfile) with a `Dyno` of type web.
 
 ## <a id="setup"></a>Setting up the project
 * [Deploying on Heroku](#setup_heroku)
@@ -20,25 +18,53 @@ If you use a fat-jar then deploying on heroku is as simple as one click. The onl
 
 First you need to install [Git](https://git-scm.com/) (if it is not installed). This command will install Git into the system.
 ```bash
-sudo apt-ger install -y git
+$ sudo apt-get install -y git
 ```
 Then you need to install [Maven](https://maven.apache.org/) with the following command.
 ```bash
-sudo apt-get install -y maven
+$ sudo apt-get install -y maven
 ```
 After all this, you need to clone the repository with the code.
 ```bash
-git clone https://github.com/jboss-outreach/facebook-echo-bot
+$ git clone https://github.com/jboss-outreach/facebook-echo-bot
 ```
 
 ### <a id="setup_heroku"></a>Deploying on Heroku
+
 [Heroku](https://www.heroku.com/) is a cloud platform that allows developers to build, run and operate applications entirely in the cloud. A limited, free tier is available for trying out this app.
 
-Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli) and deploy the app using the [Heroku Maven Plugin](https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin):
-```sh-session
+There are 3 approaches to deploying the app:
+ * Using the [Heroku Maven plugin](https://github.com/heroku/heroku-maven-plugin)
+ * Using the [Git interface](https://devcenter.heroku.com/articles/git)
+ * Using a one-click badge
+
+#### Deploying with the Heroku Maven Plugin
+
+1. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+2. Create a Heroku remote:
+```bash
 $ heroku create
+```
+3. Deploy the app using the [Heroku Maven Plugin](https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin):
+```bash
 $ mvn package heroku:deploy
 ```
+
+#### Deploying with the Git Interface
+
+1. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli)
+2. Install [Git](https://git-scm.com)
+3. Create a Heroku remote:
+```sh-session
+$ heroku create
+```
+4. Deploy the app by pushing the code to the Heroku remote:
+```sh-session
+$ git push heroku master
+```
+
+*Note:* If you use a [fat-jar](https://devcenter.heroku.com/articles/deploying-executable-jar-files) then deploying on heroku is as simple as one click. The only requirement is to create the Heroku specific [Procfile](../Procfile) with a `Dyno` of type web.
+
 ### <a id="setup_local"></a>Deploying on a local environment [localhost](https://en.wikipedia.org/wiki/Localhost)
 Build the app with [Maven](https://maven.apache.org/); set up the HTTPS tunnel and deploy the app with [Ngrok](https://ngrok.com/):
 ```sh-session
@@ -134,19 +160,6 @@ git checkout <your-name-branch>
 git fetch upstream
 git rebase upstream/master
 ```
-#### Deploy on Windows (with minimal use of CMD):
-
-Download Google App Engine from [here](https://storage.googleapis.com/appengine-sdks/featured/google_appengine_1.9.63.zip), if you haven't already.
-Unzip it and add the directory to PATH in environment variables. More help can be found [here](http://www.itprotoday.com/management-mobility/how-can-i-add-new-folder-my-system-path)
-
-Download and install python, if you haven't already.
-
-Clone the repository, or download as zip. Help can be found [here](https://www.google.co.in/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&ved=0ahUKEwiA5_-4__fXAhWKsY8KHVSuDGQQFggrMAA&url=https%3A%2F%2Fhelp.github.com%2Farticles%2Fcloning-a-repository%2F&usg=AOvVaw0J0cOUL5nBtjkmtQfsj0w-).
-
-From the Google App Engine folder, open CMD by using ```Shift+Right click```.
-Use the following code:
-```python dev_appserver.py "PATH_TO_ZIP" -port=45456 --host=0.0.0.0```
-where ```"PATH_TO_ZIP"``` is the path to the cloned/downloaded repository.
 
 Now you can send your changes.
 ```bash
