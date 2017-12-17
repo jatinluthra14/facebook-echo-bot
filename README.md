@@ -16,15 +16,15 @@ This project showcases an echo bot for Facebook, built on the [Vert.x toolkit](h
 * [Deploying on Heroku](#setup_heroku)
 * [Deploying on a local environment](#setup_local)
 
-First you need to install [Git](https://git-scm.com/) (if it is not installed). This command will install Git into the system.
+First you need to install [Git](https://git-scm.com/downloads) (if it is not installed). This command will install Git into the system.
 ```bash
 $ sudo apt-get install -y git
 ```
-Then you need to install [Maven](https://maven.apache.org/) with the following command.
+Then you need to install [Maven](https://maven.apache.org/download.cgi) with the following command.
 ```bash
 $ sudo apt-get install -y maven
 ```
-After all this, you need to clone the repository with the code.
+After all this, you need to clone you can do it by clicking this ![](https://image.ibb.co/bK3xS6/clone.png) and also with this code:
 ```bash
 $ git clone https://github.com/jboss-outreach/facebook-echo-bot
 ```
@@ -113,9 +113,9 @@ Usually, there are several ways to participate in the development of a project, 
 ### <a id="fork"></a>Forking the project
 We go to the project page and click the button "Fork". This command will create your own copy of the project's repository.
 
-![fork](https://habrastorage.org/files/22d/147/828/22d147828b834ba3b3995df947d6cc3d.png)
+![](https://image.ibb.co/fyStZm/fork.png)
 
-Next, you need to bend your copy of the repository.
+Next, you need to bend your copy of the repository.![](https://image.ibb.co/bK3xS6/clone.png) or :
 ```bash
 cd ~/work/git #folder in which there will be a code
 git clone https://github.com/jboss-outreach/wiki-explorer.git #clone repository
@@ -183,13 +183,14 @@ After creating the Pull Request, it will run the tests, perhaps some tools for m
 
 In case the tests are not passed or the build is not compiled, you will see a red error message and by clicking the Details link you will see what is wrong. In most cases, you will need to fix your Pull Request so that all checks are successful.
 
+###### And also look this [article](https://help.github.com/articles/creating-a-pull-request/) and this [video](https://www.youtube.com/watch?v=YTbRzhQju4c)
 
 ## Contributing to the project
 1. Fork and clone this repository.
 2. Make changes to your local copy of this repository.
 3. Commit and push your local changes to your fork on GitHub.
 4. Review the changes on your fork.
-5. Create a pull request to merge your changes into this repository.
+5. Create a pull request to merge your changes into this repository. Write a very conscise but informative pull request message. Remember to use your words wisely!
 
 ## Video Demonstration
 A Video Demonstration is uploaded to [`Youtube`](https://www.youtube.com/watch?v=hklLfa8096I) which can help to setup Facebook Echo Bot on any cloud.
@@ -219,4 +220,16 @@ Instead of the last command, you can also run
 ```bash
 git push origin :<your-name-branch>
 ```
+* If you need help, refer [Forking and Cloning in git](https://help.github.com/articles/fork-a-repo/). You can also ask for help in the [chat](https://gitter.im/jboss-outreach/gci). And have a look this [link](https://egghead.io/lessons/javascript-how-to-fork-and-clone-a-github-repository).
 
+### How to enter on the terminal/cmd
+  		  
+ 1. `Windows + R` and on the bar we write cmd and clic `accept` with the language you have.
+ 
+  ![](https://image.ibb.co/hCssaR/cmd.png)
+ 
+ 2. And you have opened the `cmd/terminal`
+  
+  ![](https://image.ibb.co/dANavR/cmd_open.png)
+  
+  ###### It looks like this.
