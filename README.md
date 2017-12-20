@@ -11,6 +11,7 @@ This project showcases an echo bot for Facebook, built on the [Vert.x toolkit](h
 * [Accessing the app](#ass)
 * [Setting up your Facebook app](#set)
 * [Making contributions](#contr)
+* [References](#ref)
 
 
 This project shows how to deploy a facebook echo bot Vert.x application to Heroku. The same application can be deployed using a one-click badge, the maven plugin, or the git interface.
@@ -32,7 +33,7 @@ Then you need to install [Maven](https://maven.apache.org/download.cgi) with the
 $ sudo apt-get install -y maven
 ```
 
-After all this, you need to clone you can do it by clicking this ![](https://image.ibb.co/bK3xS6/clone.png) and also with this code:
+After all this, you need to clone this repository which you can do it with the given code or download[.zip](https://github.com/jboss-outreach/facebook-echo-bot/archive/master.zip) file:
 
 ```bash
 $ git clone https://github.com/jboss-outreach/facebook-echo-bot
@@ -83,6 +84,9 @@ $ java -jar target/facebook-echo-bot-3.5.0-jar-with-dependencies.jar
 $ ./ngrok http 8080
 ```
 
+* If file is being **Denied** to open then use ```chmod +x filename``` in Linux or MacOS. For Windows, run Command Prompt as administrator.
+
+
 ## <a id="env"></a>Environment properties
 Properties must be configured before the app can be accessed:
 ```
@@ -107,7 +111,7 @@ Refer the following link to set up your Facebook app:
 `https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup`
 
 
-## <a id="contr"></a>Making contributions
+# <a id="contr"></a>Making contributions
 * [Fork](#fork)
 * [Configuring Git](#git_conf)
 * [Coding](#code)
@@ -126,7 +130,7 @@ Make your way to the project page and click on the button that says *Fork*. This
 
 ![](https://image.ibb.co/fyStZm/fork.png)
 
-Next, you need to bend your copy of the repository.![](https://image.ibb.co/bK3xS6/clone.png) or :
+Next, you need to bend your copy of the repository or :
 ```bash
 $ cd ~/work/git #folder in which there will be a code
 $ git clone https://github.com/jboss-outreach/wiki-explorer.git #clone repository
@@ -230,16 +234,30 @@ Instead of the last command, you can also run
 ```bash
 $ git push origin :<your-name-branch>
 ```
-* If you need help, refer [Forking and Cloning in git](https://help.github.com/articles/fork-a-repo/). You can also ask for help in the [chat](https://gitter.im/jboss-outreach/gci). And have a look this [link](https://egghead.io/lessons/javascript-how-to-fork-and-clone-a-github-repository).
 
-### How to enter on the terminal/cmd
+### How to open command prompt
   		  
- 1. `Windows + R` and on the bar we write cmd and clic `accept` with the language you have.
- 
-  ![](https://image.ibb.co/hCssaR/cmd.png)
- 
- 2. And you have opened the `cmd/terminal`
+ 1. Use the shortcut `Windows+R`and type `cmd`
+ 2. Now cmd will open automatically.
   
-  ![](https://image.ibb.co/dANavR/cmd_open.png)
   
-  ###### It looks like this.
+### How to open terminal in Linux
+
+1. Open `Dashboard Search` and type `terminal`
+2. Open `Terminal`
+
+### How to open Terminal in MacOS
+
+1. Use the shortcut `Cmd+Space` or open `launcher`and type `Terminal`
+2. Open `Terminal`
+  
+### <a id="ref"></a> References
+  * [How to use GitHub](https://guides.github.com/activities/hello-world/)
+  * [Git basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
+  * [Git commands handbook](https://git-scm.com/docs)
+  * [Command Prompt handbook](http://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/)
+  * [Linux Terminal handbook](http://linuxcommand.org/)
+  * [MacOS Terminal handbook](https://developer.apple.com/library/content/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html)
+  * [Heroku Handbook](https://devcenter.heroku.com/)
+  * [Maven Handbook](http://www.jcabi.com/jcabi-heroku-maven-plugin/example-start.html)
+  * [Chat with us !](https://gitter.im/jboss-outreach)
