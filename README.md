@@ -23,21 +23,32 @@ If you use a fat-jar then deploying on Heroku is as simple as a click. The only 
 * [Deploying on Heroku](#setup_heroku)
 * [Deploying on a local environment](#setup_local)
 
-First you need to install [Git](https://git-scm.com/downloads) (if it is not installed). This command will install Git into the system.
+
+#### For Linux
+
+1. First you need to install [Git](https://git-scm.com/downloads) (if it is not installed). This command will install Git into the system.
 
 ```bash
 $ sudo apt-get install -y git
 ```
-Then you need to install [Maven](https://maven.apache.org/download.cgi) with the following command.
+2. Then you need to install [Maven](https://maven.apache.org/download.cgi) with the following command.
 ```bash
 $ sudo apt-get install -y maven
 ```
 
-After all this, you need to clone this repository which you can do it with the given code or download[.zip](https://github.com/jboss-outreach/facebook-echo-bot/archive/master.zip) file:
+3. After all this, you need to clone this repository which you can do it with the given code or download[.zip](https://github.com/jboss-outreach/facebook-echo-bot/archive/master.zip) file:
 
 ```bash
 $ git clone https://github.com/jboss-outreach/facebook-echo-bot
 ```
+
+#### For Windows
+
+ 1. First you need to download and install [Git](https://git-scm.com/downloads) (if it is not installed).
+ 2. Download it from here(https://git-scm.com/download/win) 
+ 3. Run the installer
+ 4. Download and install maven from here(https://maven.apache.org/download.cgi)
+ 5. After all this, you need to clone this repository which you can do it with the given code or download[.zip](https://github.com/jboss-outreach/facebook-echo-bot/archive/master.zip) file:
 
 ### <a id="setup_heroku"></a>Deploying on Heroku
 
@@ -126,7 +137,7 @@ Usually, there are several ways to participate in the development of a project. 
 
 
 ### <a id="fork"></a>Forking the project
-Make your way to the project page and click on the button that says *Fork*. This command will create your own copy of the project's repository.
+Make your way to the project page and click on the button that says *Fork*. This command will create your own copy of the project's repository in your github[https://github.com] account.
 
 ![](https://image.ibb.co/fyStZm/fork.png)
 
@@ -162,7 +173,9 @@ Now you can easily start working on the code. While working, keep the following 
 * Write unit tests to prove that the bug is fixed, or that the new function actually works;
 * Try not to violate backward compatibility without extreme necessity;
 * Use simple and logical whole commits;
-* Write clear, clear, complete messages when you commit changes.
+* Write clear, complete messages when you commit changes.
+* Specify Relevent Details in your pull request(like files changed or reasons for such ammends)
+* Use documentation comments wherever necessary
 
 
 ### <a id="pull"></a>Sending a pull request
