@@ -81,7 +81,27 @@ public class FacebookBotVerticle extends AbstractVerticle {
                 Map message = (Map) messaging.get("message");
                 message.remove("mid");
                 message.remove("seq");
-                messaging.put("message", message);
+                if(message.get("text") != null) {
+                    messaging.put("message", message);
+                }
+                else if(message.get("attachments") != null && message.get("sticker_id") == null)
+                {
+					message.put("text", "I got an attachment!");
+                    message.remove("attachments");						
+                    messaging.put("message", message);				
+                }
+				else if(message.get("sticker_id") != null)
+                {
+					message.put("text", "Thanks for sending me a sticker");
+                    message.remove("sticker_id");						
+					message.remove("attachments");		
+                    messaging.put("message", message);				
+                }
+                else
+                {
+					message.put("text", "I got an attachment!");
+                    messaging.put("message", message);
+                }
 
                 System.out.println(JsonObject.mapFrom(messaging));
 
