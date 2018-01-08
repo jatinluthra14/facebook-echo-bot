@@ -1,5 +1,8 @@
 # Facebook Echo Bot
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3afc05a50a5d4e1ca06fe46a288146c4)](https://www.codacy.com/app/jagreetdg/facebook-echo-bot?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=jagreetdg/facebook-echo-bot&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/jboss-outreach/facebook-echo-bot.svg?branch=master)](https://travis-ci.org/jboss-outr/facebook-echo-bot)
+[![Gitter chat](https://badges.gitter.im/gitterHQ/services.png)](https://gitter.im/jboss-outreach)
+
 
 ## What is this project about?
 
@@ -7,11 +10,11 @@ This project showcases an echo bot for Facebook, built on the [Vert.x toolkit](h
 
 ## Contents
 * [Setting up the project](#setup)
-* [Environment properties](#env)
-* [Accessing the app](#ass)
-* [Setting up your Facebook app](#set)
-* [Making contributions](#contr)
-* [References](#ref)
+* [Environment properties](#environment)
+* [Accessing the app](#access)
+* [Setting up your Facebook app](#setup)
+* [Making contributions](#contributions)
+* [References](#references)
 
 
 This project shows how to deploy a facebook echo bot Vert.x application to Heroku. The same application can be deployed using a one-click badge, the maven plugin, or the git interface.
@@ -45,7 +48,7 @@ $ git clone https://github.com/jboss-outreach/facebook-echo-bot
 #### For Windows
 
  1. First you need to download and install [Git](https://git-scm.com/downloads) (if it is not installed).
- 2. Download it from here(https://git-scm.com/download/win) 
+ 2. Download it from here(https://git-scm.com/download/win)
  3. Run the installer
  4. Download and install maven from here(https://maven.apache.org/download.cgi)
  5. After all this, you need to clone this repository which you can do it with the given code or download[.zip](https://github.com/jboss-outreach/facebook-echo-bot/archive/master.zip) file:
@@ -98,8 +101,9 @@ $ ./ngrok http 8080
 * If file is being **Denied** to open then use ```chmod +x filename``` in Linux or MacOS. For Windows, run Command Prompt as administrator.
 
 
-## <a id="env"></a>Environment properties
+## <a id="environment"></a>Environment properties
 Properties must be configured before the app can be accessed:
+
 ```
  facebook.verify.token    # You have to decide. This value has to be the same for both the app and Facebook.
  facebook.access.token    # This is used to send pi hits to Facebook on your behalf.
@@ -107,22 +111,24 @@ Properties must be configured before the app can be accessed:
  http.address             # This is 0.0.0.0 by default.
 ```
 One method of setting the properties is by the command: `-D<prop-name>=<prop-val>`.
+
 Example:
+
 ```
 $ java -Dhttp.port=$PORT -jar target/facebook-echo-bot-3.5.0-jar-with-dependencies.jar
 ```
 When creating a project of your own, you'll need to borrow from the [`Procfile`](https://github.com/jboss-outreach/facebook-echo-bot/blob/master/Procfile) in the root directory of this project, and the `MAVEN_CUSTOM_OPTS` will only be necessary if your app is not the primary module of your Maven project.
 
-## <a id="ass"></a>Accessing the app
+## <a id="access"></a>Accessing the app
 The app's web hook is at `<host>:<port>/webhook`.
 For Heroku-deployed apps, it is at `<app-name>.herokuapp.com/webhook`.
 
-## <a id="set"></a>Setting up your Facebook app
+## <a id="setup"></a>Setting up your Facebook app
 Refer the following link to set up your Facebook app:
 `https://developers.facebook.com/docs/messenger-platform/getting-started/app-setup`
 
 
-# <a id="contr"></a>Making contributions
+# <a id="contributions"></a>Making contributions
 * [Fork](#fork)
 * [Configuring Git](#git_conf)
 * [Coding](#code)
@@ -141,22 +147,43 @@ Make your way to the project page and click on the button that says *Fork*. This
 
 ![](https://image.ibb.co/fyStZm/fork.png)
 
-Next, you need to bend your copy of the repository or :
+After forking thr git, the next thing you need to do is to clone (ie. copy or download) the repository onto your local machine, this can be done by:
 ```bash
 $ cd ~/work/git #folder in which there will be a code
-$ git clone https://github.com/jboss-outreach/wiki-explorer.git #clone repository
+$ git clone https://github.com/[YOUR-USERNAME]/facebook-echo-bot.git #clone repository
 ```
 
 
 ### <a id="git_conf"></a>Configuring Git
-Next, you need to make a small adjustment of your Git, so that when you send commits, your name will be displayed.
+Next, you need to make a small adjustment to your Git, so that when you send commits, your name will be displayed.
 For this it is enough to execute these commands:
 ```bash
 $ git config --global user.name "Your name"
 $ git config --global user.email you@example.com
 ```
 
+##### Setting git remotes
+Next, you will need to link remote repositories to git, remote repositories are nothing but versions of your project that are hosted on the internet or network somewhere (in this case, the jboss-outreach main repository). You can add this by setting the upstream (preferably) in your git local repository. This can be done by:
+```
+$ git remote add upstream $ https://github.com/jboss-outreach/facebook-echo-bot.git
+```
+To check if the previous step was successful run:
+```
+$ git remote -v
+```
+If the process was successful, you would see the following output:
+```
+origin https://github.com/[YOUR-USERNAME]/facebook-echo-bot.git (fetch)
 
+origin https://github.com/[YOUR-USERNAME]/facebook-echo-bot.git (push)
+
+upstream https://github.com/jboss-outreach/facebook-echo-bot.git (fetch)
+
+upstream https://github.com/jboss-outreach/facebook-echo-bot.git (push)
+```
+
+Remotes are necessary for fetching and pulling files from the main repository
+.
 ### <a id="code"></a>Coding
 
 Starting to work on your fix, you must first create the corresponding Git branch, based on the current code from the base repository.
@@ -164,8 +191,8 @@ Starting to work on your fix, you must first create the corresponding Git branch
 Choose a clear and concise name for the branch, which would reflect the essence of the changes.
 It is considered a good practice to include the number of the GitHub issue in the branch name.
 ```bash
-$ git fetch upstream
-$ git checkout -b <your-name-branch> upstream/master #exemple
+$ git fetch upstream    # fetches data from the main repository (or upstream)
+$ git checkout -b <your-name-branch>  #Creates a new branch and enables it
 ```
 
 Now you can easily start working on the code. While working, keep the following rules in mind:
@@ -180,32 +207,49 @@ Now you can easily start working on the code. While working, keep the following 
 
 ### <a id="pull"></a>Sending a pull request
 
-While you were working on the code, other changes could be made to the main branch of the project. Therefore, before submitting your changes, you need to rebase your branch.
+While you were working on the code, other changes could be made to the main branch of the project. Therefore, before submitting your changes, you need to fetch the new changes and rebase your branch.
 This is done like this:
 ```bash
 $ git checkout <your-name-branch>
 $ git fetch upstream
 $ git rebase upstream/master
 ```
+The next step is to add and then commit your change, this can be done by:
 
-Now you can send your changes.
+* Adding changes:
 ```bash
+git status        # This will list all the edited files
+git add filename.extension #To add individual files OR
+git add .            # To add all the files at once
+```
+
+
+* Commiting the changes:
+```bash
+git commit -m"Enter your commit message here"
+```
+The commit message should be very brief but at the same time informative. Use your words wisely!
+
+* Now you can send your changes.
+```bash
+
 $ git push origin <your-name-branch>
 ```
 
-After that, we go to your project clone repository, in which you participate and click the button "New Pull Request".
+  After that, we go to your project clone repository, in which you participate and click the button "New Pull Request".
 And we see the following form:
 
 ![New Pull Request](https://habrastorage.org/files/191/d14/269/191d14269eae48e29d2179e32cf4fb2c.png)
-On the left, you must select the branch in which you want to kill the changes (this is usually the master, well, in general, this is the branch you rebase to).
-On the right is a branch with your changes.
-Next, you will see a message from GitHub about whether it is possible to automatically change the changes or not.
-In most cases, you will see Able to merge.
-If there are conflicts, you will most likely need to review your changes.
-Then click the button - Create Pull Request.
+* On the left, you must select the branch in which you want to push the changes (this is usually the master, well, in general, this is the branch you rebase to) and on the right is a branch with your changes.
+
+* Next, you will see a message from GitHub whether it is possible to automatically merge the changes or not. In most cases, you will get a success message which says "Able to merge."
+
+* If there are conflicts, you will most likely need to review your changes.
+* Then click on - Create Pull Request.
 When filling out the name and description of your Pull Request it is considered good practice to specify the Issue number for which your Pull Request is created.
 After creating the Pull Request, it will run the tests, perhaps some tools for metrics and so on. The results of his work you will see in your Pull Request as shown below:
 
+* Remmber to describe your changes/feature in detail in the pull request message.
 ![results](https://habrastorage.org/files/46c/e42/a41/46ce42a41ef24141a5c74d76cdb71f13.png)
 
 In case the tests are not passed or the build is not compiled, you will see a red error message and by clicking the Details link you will see what is wrong. In most cases, you will need to fix your Pull Request so that all checks are successful.
@@ -231,7 +275,7 @@ To do so, simply return to step 6 and after making the changes and commit we per
 ```bash
 $ git checkout <your-name-branch>
 $ git fetch upstream
-$ git rebase upstream/master
+$ git rebase upstream/master		
 $ git push origin <your-name-branch>
 ```
 ### <a id="clean_up"></a>Cleaning up
@@ -249,11 +293,11 @@ $ git push origin :<your-name-branch>
 ```
 
 ### How to open command prompt
-  		  
+
  1. Use the shortcut `Windows+R`and type `cmd`
  2. Now cmd will open automatically.
-  
-  
+
+
 ### How to open terminal in Linux
 
 1. Open `Dashboard Search` and type `terminal`
@@ -263,14 +307,17 @@ $ git push origin :<your-name-branch>
 
 1. Use the shortcut `Cmd+Space` or open `launcher`and type `Terminal`
 2. Open `Terminal`
-  
-### <a id="ref"></a> References
+
+### <a id="references"></a> References
   * [How to use GitHub](https://guides.github.com/activities/hello-world/)
   * [Git basics](https://git-scm.com/book/en/v2/Getting-Started-Git-Basics)
   * [Git commands handbook](https://git-scm.com/docs)
+  * [Try git and have fun!](www.try.github.io)
   * [Command Prompt handbook](http://www.makeuseof.com/tag/a-beginners-guide-to-the-windows-command-line/)
   * [Linux Terminal handbook](http://linuxcommand.org/)
   * [MacOS Terminal handbook](https://developer.apple.com/library/content/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html)
   * [Heroku Handbook](https://devcenter.heroku.com/)
   * [Maven Handbook](http://www.jcabi.com/jcabi-heroku-maven-plugin/example-start.html)
   * [Chat with us !](https://gitter.im/jboss-outreach)
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
