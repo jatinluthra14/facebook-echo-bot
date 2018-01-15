@@ -82,7 +82,17 @@ public class FacebookBotVerticle extends AbstractVerticle {
                 message.remove("mid");
                 message.remove("seq");
                 if(message.get("text") != null) {
-                    messaging.put("message", message);
+                    if(message.get("text").toString().startsWith(".urb"))
+                    {
+                        Urban_Dict urban_dict = new Urban_Dict();
+                        String word = new String(message.get("text").toString().replaceFirst(".urb", ""));
+                        message.put("text", urban_dict.getMeaning(word));
+                        messaging.put("message", message);
+                    }
+                    else
+                    {
+                        messaging.put("message", message);
+                    }
                 }
                 else if(message.get("attachments") != null && message.get("sticker_id") == null)
                 {
