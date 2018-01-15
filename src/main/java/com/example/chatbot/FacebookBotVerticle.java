@@ -89,6 +89,13 @@ public class FacebookBotVerticle extends AbstractVerticle {
                         message.put("text", urban_dict.getMeaning(word));
                         messaging.put("message", message);
                     }
+                    else if(message.get("text").toString().startsWith(".dtz"))
+                    {
+                        TimeZone dtz = new TimeZone();
+                        String word = new String(message.get("text").toString().replaceFirst(".dtz", ""));
+                        message.put("text", dtz.getDateTime(word));
+                        messaging.put("message", message);
+                    }
                     else
                     {
                         messaging.put("message", message);
